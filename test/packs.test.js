@@ -6,7 +6,7 @@ const assert = require('node:assert/strict')
 const data = require('..')
 
 test('清单里列出的版本按 dataVersion 升序', () => {
-  assert.deepEqual(data.versions(), ['26.2'])
+  assert.deepEqual(data.versions(), ['26.2', '26.3'])
 })
 
 test('每个 pack 的 version.json 与清单一致', () => {
@@ -22,10 +22,11 @@ test('每个 pack 的 version.json 与清单一致', () => {
 
 test('协议号与已知发布版本对得上', () => {
   assert.equal(data.pack('26.2').protocolVersion, 776)
-  assert.deepEqual(data.pack('26.2').versionJson, {
-    version: 776,
-    minecraftVersion: '26.2',
-    majorVersion: '26.2',
+  assert.equal(data.pack('26.3').protocolVersion, 777)
+  assert.deepEqual(data.pack('26.3').versionJson, {
+    version: 777,
+    minecraftVersion: '26.3',
+    majorVersion: '26.3',
     releaseType: 'release'
   })
 })
@@ -46,23 +47,31 @@ test('26.2 的 login_success 带 sessionId（和正式服一致）', () => {
   assert.ok(fields.some(field => field.name === 'sessionId'))
 })
 
+test('26.3 声明了需要运行时补的 entityDelta 原生类型', () => {
+  assert.deepEqual(data.pack('26.3').nativeTypes, ['entityDelta'])
+  assert.equal(data.pack('26.3').protocol.types.entityDelta, 'native')
+  const relMove = data.pack('26.3').protocol.play.toClient.types.packet_rel_entity_move
+  assert.ok(JSON.stringify(relMove).includes('entityDelta'))
+})
+
 test('latest() 返回 dataVersion 最大的版本', () => {
-  assert.equal(data.latest().minecraftVersion, '26.2')
+  assert.equal(data.latest().minecraftVersion, '26.3')
 })
 
 test('未知版本给出生错误信息', () => {
   assert.throws(() => data.pack('26.9'), /没有 26\.9 的数据包/)
-  assert.throws(() => data.pack('26.3'), /没有 26\.3 的数据包/)
 })
 
 test('pack 是冻结的，调用方改不动', () => {
   const pack = data.pack('26.2')
   assert.ok(Object.isFrozen(pack))
   assert.ok(Object.isFrozen(pack.versionJson))
+  assert.ok(Object.isFrozen(pack.nativeTypes))
 })
 
 test('数据来源可追溯', () => {
   const pack = data.pack('26.2')
   assert.match(pack.source.commit, /^[0-9a-f]{40}$/)
   assert.equal(pack.source.branch, 'pc_26_2')
+  assert.equal(data.pack('26.3').source.pullRequest, 1345)
 })

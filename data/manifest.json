@@ -25,6 +25,34 @@
         "branch": "pc_26_2",
         "commit": "282f19b06c7cc98f055c39787acf93904b9587fa"
       }
+    },
+    "26.3": {
+      "minecraftVersion": "26.3",
+      "majorVersion": "26.3",
+      "protocolVersion": 777,
+      "dataVersion": 5023,
+      "releaseType": "release",
+      "baseVersion": "26.1",
+      "chunkBase": "1.18",
+      "physicsBase": "26.1",
+      "nativeTypes": ["entityDelta"],
+      "files": {
+        "protocol": {
+          "path": "pc/26.3/protocol.json",
+          "sha256": "c2182c8a0c00fa9767fcf34fedac683de1aef7acd113f64a9b375586c1a38fba"
+        },
+        "version": {
+          "path": "pc/26.3/version.json",
+          "sha256": "0d08bd2b5bce95b84405b8d39d259a365663789d22e968bdbdad9a2d4b2cc45f"
+        }
+      },
+      "source": {
+        "repository": "suisarbre/minecraft-data",
+        "branch": "port-26.3",
+        "commit": "312f3cada17a7d9e2e1a1834fe26f17296163096",
+        "pullRequest": 1345,
+        "note": "PR #1345（stacked on #1301）的协议修正 + 生成数据"
+      }
     }
   }
 }
