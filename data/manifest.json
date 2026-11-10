@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "packs": {
+    "26.2": {
+      "minecraftVersion": "26.2",
+      "majorVersion": "26.2",
+      "protocolVersion": 776,
+      "dataVersion": 4903,
+      "releaseType": "release",
+      "baseVersion": "26.1",
+      "chunkBase": "1.18",
+      "physicsBase": "26.1",
+      "files": {
+        "protocol": {
+          "path": "pc/26.2/protocol.json",
+          "sha256": "e19d839857e4fc9faaa829e68736eaab181f21167db1b0449d3abb284b47305d"
+        },
+        "version": {
+          "path": "pc/26.2/version.json",
+          "sha256": "e4a731efdc228a6dafd61eb842e8eb76f9d6b766979254d743e161b86d7c1d0c"
+        }
+      },
+      "source": {
+        "repository": "PrismarineJS/minecraft-data",
+        "branch": "pc_26_2",
+        "commit": "282f19b06c7cc98f055c39787acf93904b9587fa"
+      }
+    }
+  }
+}

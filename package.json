@@ -1,0 +1,29 @@
+﻿{
+  "name": "@whale-craft/mc-data-beyond",
+  "version": "0.1.0",
+  "description": "mineflayer 生态的版本数据包：把 minecraft-data 还没收录的 Minecraft 版本（协议定义、版本号、数据基线）独立带进来。",
+  "keywords": [
+    "minecraft",
+    "minecraft-data",
+    "protocol",
+    "mineflayer",
+    "prismarine"
+  ],
+  "license": "MIT",
+  "author": "whale-craft",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "data",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  }
+}
